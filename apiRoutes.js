@@ -1,10 +1,9 @@
 const router = require("express").Router();
 const path = require("path");
 const fs = require("fs");
-const uuidv4 = require("uuid");
+const { v4: uuidv4 } = require('uuid');
 
-
-router.get("/api/notes", function(req,res) {
+router.get("/notes", function(req,res) {
     fs.readFile(path.join(__dirname, "db", "db.json"), "utf8", function(err,data) {
         // console.log(data)
         if(err) throw err;
@@ -12,11 +11,11 @@ router.get("/api/notes", function(req,res) {
     });
 });
 
-router.post("/api/notes", function(req, res) {
+router.post("/notes", function(req, res) {
     fs.readFile(path.join(__dirname, "db", "db.json"), "utf8", function(err,data) {
         if (err) throw err;
         const memo = JSON.parse(data);
-        const id = uuidv4();
+        const id = uuidv4(); // ⇨ '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'
         memo.push({
             title: req.body.title,
             text: req.body.text,
@@ -31,14 +30,15 @@ router.post("/api/notes", function(req, res) {
 
 });
 
-// router.delete("/api/notes/:id", function(req, res) {
+// router.delete("/notes/:id", function(req, res) {
 //     fs.readFile(path.join(__dirname, "db", "db.json"), "utf8", function(err, data) {
 //         if (err) throw err;
-//         const savedMemo = JSON.parse(data);
+//         const savedMemos = JSON.parse(data);
 //         const newArray = [];
-//         for (let note of savedMemo) {
-//             if(note.id === req.params.id) {
-//             newArray.push(note);
+//         for (let memo of savedMemos) {
+//             console.log (memo);
+//             if(memo.id !== req.params.id) {
+//             newArray.push(memo);
 //         }
 
 //     };
