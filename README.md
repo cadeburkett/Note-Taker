@@ -3,7 +3,7 @@
 ## Description
 Note Taker is an app that allows you to record memos with title and text to keep track of tasks.
 
-Deployed app: 
+Deployed app: https://damp-refuge-23880.herokuapp.com/
 
 Screen shots of app and a memo when clicked on:
 ![Screen Shot 2021-04-12 at 19 28 37](https://user-images.githubusercontent.com/71572375/114488125-a8ee8a80-9bc5-11eb-907b-e32450a6a2ed.png)
